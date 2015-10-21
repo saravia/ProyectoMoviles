@@ -5,15 +5,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MenuAplicacion extends Activity {
-    Button btnShowLocation;
-    Button salir;
+    private Button btnShowLocation;
+    private Button salir;
+    private TextView txtName;
+    private TextView txtEmail;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.menupresentacion);
+        txtName = (TextView) findViewById(R.id.name);
+        txtEmail = (TextView) findViewById(R.id.email);
+
+        String name = "pepito";
+        String email = "pepito@uni.edu.pe";
+        txtName.setText(name);
+        txtEmail.setText(email);
+
         btnShowLocation = (Button) findViewById(R.id.btnShowLocation);
         salir= (Button) findViewById(R.id.btnSalir);
         btnShowLocation.setOnClickListener(new View.OnClickListener() {
