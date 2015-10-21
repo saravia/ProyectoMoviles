@@ -66,12 +66,12 @@
             android:text="Registrar" />
         <!--  Link to Login Screen -->
         <Button
-            android:id="@+id/btnLinkToLoginScreen"
+            android:id="@+id/btntologin"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dip"
             android:background="@null"
-            android:text="Already registred. Login Me!"
+            android:text="Ya estoy Registrado. Login"
             android:textColor="#21dbd4"
             android:textStyle="bold" />
     </LinearLayout>

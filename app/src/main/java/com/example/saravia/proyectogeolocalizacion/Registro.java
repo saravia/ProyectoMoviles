@@ -1,20 +1,32 @@
 package com.example.saravia.proyectogeolocalizacion;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class Registro extends AppCompatActivity {
-
+    private Button irLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
+        irLogin=(Button)findViewById(R.id.btntologin);
+        irLogin.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Registro.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
 
     }
-
 
 
 

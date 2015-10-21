@@ -1,6 +1,5 @@
 package com.example.saravia.proyectogeolocalizacion;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText username;
     private EditText pass;
     private Button login;
+    private Button registrar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,23 +23,29 @@ public class MainActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.loginEmail);
         pass = (EditText)findViewById(R.id.loginPassword);
         login = (Button)findViewById(R.id.btnLogin);
-
-        login.setOnClickListener(new View.OnClickListener(){
+        registrar=(Button)findViewById(R.id.btnRegister);
+        login.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
-                String usuario=username.getText().toString();
-                String passw=pass.getText().toString();
-
-
-                if( checklogindata( usuario , passw )==true){
-                   Intent i = new Intent(MainActivity.this, Registro.class);
+                String usuario = username.getText().toString();
+                String passw = pass.getText().toString();
+                if (checklogindata(usuario, passw) == true) {
+                    Intent i = new Intent(MainActivity.this, MenuAplicacion.class);
                     startActivity(i);
-                  //  System.out.print("hoala");
-                }else{
+                } else {
                     err_login();
                 }
+            }
+        });
+
+       registrar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                    Intent i = new Intent(MainActivity.this, Registro.class);
+                    startActivity(i);
+
             }
         });
     }
@@ -61,11 +67,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void err_login(){
-       /* AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
-        dialogo1.setTitle("Importante");
-        dialogo1.setMessage("¿ Acepta la ejecución de este programa en modo prueba ?");
-        dialogo1.setCancelable(false);
-        dialogo1.show();*/
         Toast toast1 = Toast.makeText(getApplicationContext(), "Error:Nombre de usuario o password incorrectos", Toast.LENGTH_SHORT);
         toast1.show();
     }
@@ -80,9 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
