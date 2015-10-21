@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp" />
+
+
+    </LinearLayout>
+
+
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:rowCount="33"
+        android:columnCount="5"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="438dp">
+
+        <Button
+            android:id="@+id/btnShowLocation"
+            android:textSize="18dip"
+            android:text="Estado GPS"
+            android:layout_row="3"
+            android:layout_column="2"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="Salir"
+            android:id="@+id/btnSalir"
+            android:textSize="21dip"
+            android:layout_row="3"
+            android:layout_column="4"
+            android:layout_width="139dp"
+            android:layout_height="wrap_content" />
+
+    </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido"
+        android:textSize="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:id="@+id/textView" />
+
+    <TableLayout
+
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true">
+
+        <TableRow
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="20px"
+            android:paddingRight="20px"
+            android:paddingBottom = "10px"
+            >
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingRight="20px"
+                android:weightSum="1">
+
+                <Button
+                    android:layout_width="51dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/nuevo"
+                    android:id="@+id/btnIrEven" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Evento"
+                    android:layout_weight="0.04" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="20px"
+                android:weightSum="1">
+
+                <Button
+                    android:layout_width="61dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/users"
+                    android:id="@+id/btnIrCont"
+                    android:layout_weight="0.64" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:text="Contactos" />
+            </LinearLayout>
+
+            <TableRow
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="20px"
+                android:paddingRight="20px"
+                android:paddingTop = "20px"
+                android:paddingBottom = "10px"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingLeft="20px"
+                    android:weightSum="1">
+
+                    <Button
+                        android:layout_width="69dp"
+                        android:layout_height="51dp"
+                        android:background="@drawable/chat"
+                      />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="26dp"
+                        android:gravity="center"
+                        android:text="Chat" />
+
+                </LinearLayout>
+
+            </TableRow>
+
+
+        </TableRow>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingRight="10px"
+            >
+            <Button
+                android:layout_width="61dp"
+                android:layout_height="49dp"
+                android:background="@drawable/localizacion"
+                android:padding="20px"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:gravity="center"
+
+                android:text="Localizacion"
+              />
+        </LinearLayout>
+
+
+    </TableLayout>
+</RelativeLayout>
