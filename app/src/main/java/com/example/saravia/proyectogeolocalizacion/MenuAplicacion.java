@@ -13,10 +13,11 @@ public class MenuAplicacion extends Activity {
     private Button salir;
     private TextView txtName;
     private TextView txtEmail;
+    private Button btnIrEven;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menupresentacion);
+        setContentView(R.layout.menuapp);
         txtName = (TextView) findViewById(R.id.name);
         txtEmail = (TextView) findViewById(R.id.email);
 
@@ -24,9 +25,18 @@ public class MenuAplicacion extends Activity {
         String email = "pepito@uni.edu.pe";
         txtName.setText(name);
         txtEmail.setText(email);
-
+        btnIrEven=(Button) findViewById(R.id.btnIrEven);
         btnShowLocation = (Button) findViewById(R.id.btnShowLocation);
         salir= (Button) findViewById(R.id.btnSalir);
+        btnIrEven.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent i = new Intent(MenuAplicacion.this, CrearEvento.class);
+                startActivity(i);
+
+            }
+        });
+
         btnShowLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
