@@ -24,12 +24,13 @@ public class MainActivity extends AppCompatActivity {
         pass = (EditText)findViewById(R.id.loginPassword);
         login = (Button)findViewById(R.id.btnLogin);
         registrar=(Button)findViewById(R.id.btnRegister);
+        // Hace Login
         login.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 String usuario = username.getText().toString();
                 String passw = pass.getText().toString();
+                // Verifica el usuario y su password
                 if (checklogindata(usuario, passw) == true) {
                     Intent i = new Intent(MainActivity.this, MenuAplicacion.class);
                     startActivity(i);
@@ -38,9 +39,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+            // Te envia a que te registres
        registrar.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                     Intent i = new Intent(MainActivity.this, Registro.class);
