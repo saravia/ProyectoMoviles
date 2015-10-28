@@ -123,12 +123,16 @@
                 android:weightSum="1">
 
                 <Button
-                    android:layout_width="66dp"
-                    android:layout_height="52dp"
+                    android:layout_width="52dp"
+                    android:layout_height="50dp"
                     android:background="@drawable/agenda"
-                    android:id="@+id/btnIrCont"
-                    android:layout_weight="0.48" />
-
+                    android:id="@+id/btnIrCont" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="29dp"
+                    android:gravity="center"
+                    android:text="Agenda"
+                    android:textColor="#010101" />
 
             </LinearLayout>
 

@@ -14,6 +14,7 @@ public class MenuAplicacion extends Activity {
     private TextView txtName;
     private TextView txtEmail;
     private Button btnIrEven;
+    private Button btnIrCont;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +28,28 @@ public class MenuAplicacion extends Activity {
         txtEmail.setText(email);
         btnIrEven=(Button) findViewById(R.id.btnIrEven);
         btnShowLocation = (Button) findViewById(R.id.btnShowLocation);
+        btnIrCont=(Button)findViewById(R.id.btnIrCont);
         salir= (Button) findViewById(R.id.btnSalir);
         btnIrEven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent i = new Intent(MenuAplicacion.this, CrearEvento.class);
+                Intent i = new Intent(MenuAplicacion.this, MenuEvento.class);
                 startActivity(i);
 
             }
         });
 
+
+        btnIrCont.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MenuAplicacion.this,MapsActivity.class);
+                startActivity(i);
+
+            }
+        });
         btnShowLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
