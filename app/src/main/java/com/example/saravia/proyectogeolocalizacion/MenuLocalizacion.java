@@ -23,13 +23,13 @@ public class MenuLocalizacion extends TabActivity {
                 .setIndicator("", ressources.getDrawable(R.drawable.mapa))
                 .setContent(intentAndroid);
         //Tab CONTACTO
-        Intent intentApple = new Intent().setClass(this, MenuAplicacion.class);
+        Intent intentApple = new Intent().setClass(this, ListaAmigos.class);
         TabHost.TabSpec tabSpecApple = tabHost
                 .newTabSpec("Contactos")
                 .setIndicator("", ressources.getDrawable(R.drawable.contacto))
                 .setContent(intentApple);
         //tab CHAT
-        Intent intentWindows = new Intent().setClass(this, Registro.class);
+        Intent intentWindows = new Intent().setClass(this, Chat.class);
         TabHost.TabSpec tabSpecWindows = tabHost
                 .newTabSpec("Chat")
                 .setIndicator("", ressources.getDrawable(R.drawable.chat))

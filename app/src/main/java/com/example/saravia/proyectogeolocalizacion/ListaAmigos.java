@@ -9,35 +9,38 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ListaEvento extends AppCompatActivity {
+public class ListaAmigos extends AppCompatActivity {
 
     private ListView lstOpciones;
-    private Evento[] comida =
-            new Evento[]{
-                    new Evento("Presentacion de Trabajo", "18/10/2015"),
-                    new Evento("Reunion Confraternidad", "26/11/2014"),
-                                 };
+    private Amigos[] comida =
+            new Amigos[]{
+                    new Amigos("Zutano", "96566425"),
+                    new Amigos("Perengano", "95646587"),
+                    new Amigos("Mengano", "966236425"),
+                    new Amigos("Fulano", "901001587"),
+                    new Amigos("Chiquito", "94562425"),
+                    new Amigos("Kazeta", "94654547"),
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.evento);
+        setContentView(R.layout.amigos);
         lstOpciones = (ListView)findViewById(R.id.LstOpciones);
-        AdaptadorTitulares adaptador =
-                new AdaptadorTitulares(this, comida);
+        AdaptadorTitulares adaptador =new AdaptadorTitulares(this, comida);
 
         lstOpciones.setAdapter(adaptador);
+        /*
         lstOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               Intent myIntent = new Intent(view.getContext(), MenuLocalizacion.class);
-               startActivity(myIntent);
-           }
-       });
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(view.getContext(), MenuLocalizacion.class);
+                startActivity(myIntent);
+            }
+        });*/
 
     }
 
@@ -65,21 +68,21 @@ public class ListaEvento extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    class AdaptadorTitulares extends ArrayAdapter<Evento> {
+    class AdaptadorTitulares extends ArrayAdapter<Amigos> {
 
-        public AdaptadorTitulares(Context context, Evento[] datos) {
-            super(context, R.layout.lista_evento, datos);
+        public AdaptadorTitulares(Context context, Amigos[] datos) {
+            super(context, R.layout.lista_amigos, datos);
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            View item = inflater.inflate(R.layout.lista_evento, null);
+            View item = inflater.inflate(R.layout.lista_amigos, null);
 
             TextView lblTitulo = (TextView)item.findViewById(R.id.LblTitulo);
             lblTitulo.setText(comida[position].getNombre());
 
             TextView lblSubtitulo = (TextView)item.findViewById(R.id.LblSubTitulo);
-            lblSubtitulo.setText(comida[position].getIngrediente());
+            lblSubtitulo.setText(comida[position].getNum());
 
 
             return(item);
