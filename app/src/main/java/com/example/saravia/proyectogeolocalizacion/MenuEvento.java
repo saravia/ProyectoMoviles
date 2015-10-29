@@ -19,6 +19,7 @@ import android.widget.TextView;
 public class MenuEvento extends AppCompatActivity{
     private Button btnIrCrearEvent;
 
+
     private ListView listView;
     private Evento[] evento =
             new Evento[]{
