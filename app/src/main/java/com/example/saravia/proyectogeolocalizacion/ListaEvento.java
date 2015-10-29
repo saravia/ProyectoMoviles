@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class ListaEvento extends AppCompatActivity {
 
     private ListView lstOpciones;
-    private Evento[] comida =
+    private Evento[] evento =
             new Evento[]{
                     new Evento("Presentacion de Trabajo", "18/10/2015"),
                     new Evento("Reunion Confraternidad", "26/11/2014"),
@@ -29,7 +29,7 @@ public class ListaEvento extends AppCompatActivity {
         setContentView(R.layout.evento);
         lstOpciones = (ListView)findViewById(R.id.LstOpciones);
         AdaptadorTitulares adaptador =
-                new AdaptadorTitulares(this, comida);
+                new AdaptadorTitulares(this, evento);
 
         lstOpciones.setAdapter(adaptador);
         lstOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,10 +76,10 @@ public class ListaEvento extends AppCompatActivity {
             View item = inflater.inflate(R.layout.lista_evento, null);
 
             TextView lblTitulo = (TextView)item.findViewById(R.id.LblTitulo);
-            lblTitulo.setText(comida[position].getNombre());
+            lblTitulo.setText(evento[position].getNombre());
 
             TextView lblSubtitulo = (TextView)item.findViewById(R.id.LblSubTitulo);
-            lblSubtitulo.setText(comida[position].getIngrediente());
+            lblSubtitulo.setText(evento[position].getIngrediente());
 
 
             return(item);
