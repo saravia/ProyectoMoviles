@@ -62,7 +62,7 @@ public class MenuEvento extends AppCompatActivity{
 
         FragmentManager manager = getFragmentManager();
 
-        MyDialogFragment1 dialog = new MyDialogFragment1();
+        MyDialogFragmentEvento dialog = new MyDialogFragmentEvento();
         dialog.show(manager, "dialog");
 
     }
