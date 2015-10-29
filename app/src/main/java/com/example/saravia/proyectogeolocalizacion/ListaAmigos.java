@@ -1,5 +1,6 @@
 package com.example.saravia.proyectogeolocalizacion;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,17 +36,23 @@ public class ListaAmigos extends AppCompatActivity {
         AdaptadorTitulares adaptador =new AdaptadorTitulares(this, comida);
 
         lstOpciones.setAdapter(adaptador);
-        /*
+
         lstOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myIntent = new Intent(view.getContext(), MenuLocalizacion.class);
-                startActivity(myIntent);
+               showDialog(view);
             }
-        });*/
+        });
 
     }
 
+    public void showDialog(View view) {
 
+        FragmentManager manager = getFragmentManager();
+
+        MyDialogFragment dialog = new MyDialogFragment();
+        dialog.show(manager, "dialog");
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
