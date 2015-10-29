@@ -45,8 +45,8 @@ public class MenuEvento extends AppCompatActivity{
 
 
         listView = (ListView)findViewById(R.id.listView);
-        AdaptadorTitulares adaptador =
-        new AdaptadorTitulares(this, evento);
+        AdaptadorTitulares1 adaptador =
+        new AdaptadorTitulares1(this, evento);
         listView.setAdapter(adaptador);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -68,9 +68,9 @@ public class MenuEvento extends AppCompatActivity{
     }
 
 
-    class AdaptadorTitulares extends ArrayAdapter<Evento> {
+    class AdaptadorTitulares1 extends ArrayAdapter<Evento> {
 
-        public AdaptadorTitulares(Context context, Evento[] datos) {
+        public AdaptadorTitulares1(Context context, Evento[] datos) {
             super(context, R.layout.menuevent, datos);
         }
 
