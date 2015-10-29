@@ -1,13 +1,13 @@
 package com.example.saravia.proyectogeolocalizacion;
 
-public class Comida {
+public class Evento {
     private String Nombre;
-    private String Fecha;
+    private String IngredienteyTimecop;
 
 
-    public Comida(String nombre, String ingredientep) {
+    public Evento(String nombre, String ingredientep) {
         Nombre = nombre;
-        Fecha = ingredientep;
+        IngredienteyTimecop = ingredientep;
 
     }
 
@@ -20,11 +20,11 @@ public class Comida {
     }
 
     public String getIngrediente() {
-        return Fecha;
+        return IngredienteyTimecop;
     }
 
     public void setIngrediente(String ingrediente) {
-        Fecha = ingrediente;
+        IngredienteyTimecop = ingrediente;
     }
 
 

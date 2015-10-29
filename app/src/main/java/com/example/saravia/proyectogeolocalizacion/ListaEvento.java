@@ -1,6 +1,5 @@
 package com.example.saravia.proyectogeolocalizacion;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -18,10 +17,10 @@ import android.widget.TextView;
 public class ListaEvento extends AppCompatActivity {
 
     private ListView lstOpciones;
-    private Comida[] comida =
-            new Comida[]{
-                    new Comida("Presentacion de Trabajo", "18/10/2015"),
-                    new Comida("Reunion Confraternidad", "26/11/2014"),
+    private Evento[] evento =
+            new Evento[]{
+                    new Evento("Presentacion de Trabajo", "18/10/2015"),
+                    new Evento("Reunion Confraternidad", "26/11/2014"),
                                  };
 
     @Override
@@ -30,7 +29,7 @@ public class ListaEvento extends AppCompatActivity {
         setContentView(R.layout.main);
         lstOpciones = (ListView)findViewById(R.id.LstOpciones);
         AdaptadorTitulares adaptador =
-                new AdaptadorTitulares(this, comida);
+                new AdaptadorTitulares(this, evento);
 
         lstOpciones.setAdapter(adaptador);
         lstOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,9 +65,9 @@ public class ListaEvento extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    class AdaptadorTitulares extends ArrayAdapter<Comida> {
+    class AdaptadorTitulares extends ArrayAdapter<Evento> {
 
-        public AdaptadorTitulares(Context context, Comida[] datos) {
+        public AdaptadorTitulares(Context context, Evento[] datos) {
             super(context, R.layout.lista_evento, datos);
         }
 
@@ -77,10 +76,10 @@ public class ListaEvento extends AppCompatActivity {
             View item = inflater.inflate(R.layout.lista_evento, null);
 
             TextView lblTitulo = (TextView)item.findViewById(R.id.LblTitulo);
-            lblTitulo.setText(comida[position].getNombre());
+            lblTitulo.setText(evento[position].getNombre());
 
             TextView lblSubtitulo = (TextView)item.findViewById(R.id.LblSubTitulo);
-            lblSubtitulo.setText(comida[position].getIngrediente());
+            lblSubtitulo.setText(evento[position].getIngrediente());
 
 
             return(item);
