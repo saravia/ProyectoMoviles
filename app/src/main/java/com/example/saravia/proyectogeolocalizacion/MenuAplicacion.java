@@ -45,7 +45,7 @@ public class MenuAplicacion extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MenuAplicacion.this,MenuLocalizacion.class);
+                Intent i = new Intent(MenuAplicacion.this,ListaEvento.class);
                 startActivity(i);
 
             }

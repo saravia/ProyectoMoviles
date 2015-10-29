@@ -68,6 +68,10 @@
             android:name=".MenuLocalizacion"
             android:label="@string/title_activity_demo1" >
         </activity>
+        <activity
+            android:name=".ListaEvento"
+            android:label="@string/title_activity_lista_evento" >
+        </activity>
     </application>
 
 </manifest>

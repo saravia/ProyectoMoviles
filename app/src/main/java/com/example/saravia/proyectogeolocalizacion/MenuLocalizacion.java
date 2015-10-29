@@ -19,19 +19,19 @@ public class MenuLocalizacion extends TabActivity {
         // Tab MAPA
         Intent intentAndroid = new Intent().setClass(this, MapsActivity.class);
         TabHost.TabSpec tabSpecAndroid = tabHost
-                .newTabSpec("Android")
+                .newTabSpec("Mapa")
                 .setIndicator("", ressources.getDrawable(R.drawable.mapa))
                 .setContent(intentAndroid);
         //Tab CONTACTO
         Intent intentApple = new Intent().setClass(this, MenuAplicacion.class);
         TabHost.TabSpec tabSpecApple = tabHost
-                .newTabSpec("Apple")
+                .newTabSpec("Contactos")
                 .setIndicator("", ressources.getDrawable(R.drawable.contacto))
                 .setContent(intentApple);
         //tab CHAT
         Intent intentWindows = new Intent().setClass(this, Registro.class);
         TabHost.TabSpec tabSpecWindows = tabHost
-                .newTabSpec("Windows")
+                .newTabSpec("Chat")
                 .setIndicator("", ressources.getDrawable(R.drawable.chat))
                 .setContent(intentWindows);
         // colocamos Tabs
