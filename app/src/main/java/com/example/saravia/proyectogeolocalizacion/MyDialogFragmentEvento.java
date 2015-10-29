@@ -30,6 +30,7 @@ public class MyDialogFragmentEvento extends DialogFragment implements
         return view;
     }
 
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 
