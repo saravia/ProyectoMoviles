@@ -3,6 +3,7 @@ package com.example.saravia.proyectogeolocalizacion;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,10 +16,13 @@ public class MenuAplicacion extends Activity {
     private TextView txtEmail;
     private Button btnIrEven;
     private Button btnIrCont;
+    private Integer ID=0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menuapp);
+        ID=(Integer) getIntent().getExtras().get("ID");
+        Log.d("ID",ID.toString());
         txtName = (TextView) findViewById(R.id.name);
         txtEmail = (TextView) findViewById(R.id.email);
 
@@ -34,6 +38,7 @@ public class MenuAplicacion extends Activity {
             @Override
             public void onClick(View arg0) {
                 Intent i = new Intent(MenuAplicacion.this, MenuEvento.class);
+                i.putExtra("ID",ID);
                 startActivity(i);
 
             }
@@ -46,6 +51,7 @@ public class MenuAplicacion extends Activity {
             public void onClick(View v) {
 
                 Intent i = new Intent(MenuAplicacion.this,ListaEvento.class);
+                i.putExtra("ID",ID);
                 startActivity(i);
 
             }

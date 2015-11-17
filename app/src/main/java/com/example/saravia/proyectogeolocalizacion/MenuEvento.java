@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 public class MenuEvento extends AppCompatActivity{
     private Button btnIrCrearEvent;
-
+    private Integer ID=0;
 
     private ListView listView;
     private Evento[] evento =
@@ -30,7 +30,7 @@ public class MenuEvento extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menuevent);
-
+        ID=(Integer) getIntent().getExtras().get("ID");
         btnIrCrearEvent = (Button)findViewById(R.id.btnIrCrearEvent);
 
         btnIrCrearEvent.setOnClickListener(new View.OnClickListener() {

@@ -12,15 +12,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.NameValuePair;
+import cz.msebera.android.httpclient.client.ClientProtocolException;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 public class MainActivity extends AppCompatActivity {
     private EditText username;
@@ -40,52 +52,56 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG_NOMBRE = "name";
     private static final String TAG_PASSWORD = "password";
     JSONArray users = null;
+    Integer ID;
     //
     //
-
-    class cargaUsuario extends AsyncTask<String, String, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(MainActivity.this);
-            pDialog.setMessage("Cargando. Por favor espere...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
-        }
-        protected String doInBackground(String... args) {
-            List params = new ArrayList();
-            JSONObject json =
-                    jParser.makeHttpRequest(url_get_users, "GET", params);
-            Log.d("USER: ", json.toString());
-            try {
-                int success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
-                    users=json.getJSONArray(TAG_TBL_USERS);
-                    for (int i = 0; i < users.length(); i++) {
-                        JSONObject c = users.getJSONObject(i);
-                        String id = c.getString(TAG_ID);
-                        String name = c.getString(TAG_NOMBRE);
-                        String password = c.getString(TAG_PASSWORD);
-
-                        HashMap map = new HashMap();
-                        map.put(TAG_ID, id);
-                        map.put(TAG_NOMBRE, name);
-                        map.put(TAG_PASSWORD, password);
-                        userLista.add(map);
-                    }
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
+    private void cargaUsuario(String name) {
+        class cargaUsuario extends AsyncTask<String, String, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                pDialog = new ProgressDialog(MainActivity.this);
+                pDialog.setMessage("Cargando. Por favor espere...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(false);
+                pDialog.show();
             }
-            return null;
+
+            protected String doInBackground(String... args) {
+                List params = new ArrayList();
+                JSONObject json =
+                        jParser.makeHttpRequest(url_get_users, "GET", params);
+                Log.d("USER: ", json.toString());
+                try {
+                    int success = json.getInt(TAG_SUCCESS);
+                    if (success == 1) {
+                        users = json.getJSONArray(TAG_TBL_USERS);
+                        for (int i = 0; i < users.length(); i++) {
+                            JSONObject c = users.getJSONObject(i);
+                            String id = c.getString(TAG_ID);
+                            String name = c.getString(TAG_NOMBRE);
+                            String password = c.getString(TAG_PASSWORD);
+
+                            HashMap map = new HashMap();
+                            map.put(TAG_ID, id);
+                            map.put(TAG_NOMBRE, name);
+                            map.put(TAG_PASSWORD, password);
+                            userLista.add(map);
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            protected void onPostExecute(String file_url) {
+                pDialog.dismiss();
+            }
         }
-        protected void onPostExecute(String file_url) {
-            pDialog.dismiss();
-        }
+        cargaUsuario sendPostReqAsyncTask = new cargaUsuario();
+        sendPostReqAsyncTask.execute(name);
     }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,10 +119,12 @@ public class MainActivity extends AppCompatActivity {
                 String usuario = username.getText().toString();
                 String passw = pass.getText().toString();
                 // Verifica el usuario y su password
-                new cargaUsuario().execute();
+                cargaUsuario(usuario);
+                //new cargaUsuario().execute();
                 try{
-                    if (checklogindata(usuario, passw) == true) {
+                    if (checklogindata(usuario, passw)==true) {
                         Intent i = new Intent(MainActivity.this, MenuAplicacion.class);
+                        i.putExtra("ID",ID);
                         startActivity(i);
                     } else {
                         err_login();
@@ -123,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                     Intent i = new Intent(MainActivity.this, Registro.class);
                     startActivity(i);
-
             }
         });
     }
@@ -140,9 +157,11 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<userLista.size();i++){
             if(username.equals(userLista.get(i).get("name"))){
                 if(encryptedPass.equals(userLista.get(i).get("password"))) {
+
                     CharSequence text = "Bienvenido " + username;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                    ID=Integer.parseInt(userLista.get(i).get("id"));
                     return true;
                 }
             }

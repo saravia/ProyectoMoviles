@@ -8,16 +8,19 @@ import android.view.Menu;
 import android.widget.TabHost;
 public class MenuLocalizacion extends TabActivity {
 
+    private Integer ID;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menulocalizacion);
+        ID=(Integer) getIntent().getExtras().get("ID");
         Resources ressources = getResources();
 
         TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
         tabHost.setup();
         // Tab MAPA
         Intent intentAndroid = new Intent().setClass(this, MapsActivity.class);
+        intentAndroid.putExtra("ID",ID);
         TabHost.TabSpec tabSpecAndroid = tabHost
                 .newTabSpec("Mapa")
                 .setIndicator("", ressources.getDrawable(R.drawable.mapa))

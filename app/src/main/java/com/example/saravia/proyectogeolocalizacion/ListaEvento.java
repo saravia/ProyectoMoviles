@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 public class ListaEvento extends AppCompatActivity {
 
+    private Integer ID=0;
     private ListView lstOpciones;
     private Evento[] evento =
             new Evento[]{
@@ -27,6 +28,8 @@ public class ListaEvento extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.evento);
+        ID=(Integer) getIntent().getExtras().get("ID");
+
         lstOpciones = (ListView)findViewById(R.id.LstOpciones);
         AdaptadorTitulares adaptador =
                 new AdaptadorTitulares(this, evento);
@@ -35,6 +38,7 @@ public class ListaEvento extends AppCompatActivity {
         lstOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                Intent myIntent = new Intent(view.getContext(), MenuLocalizacion.class);
+               myIntent.putExtra("ID",ID);
                startActivity(myIntent);
            }
        });
