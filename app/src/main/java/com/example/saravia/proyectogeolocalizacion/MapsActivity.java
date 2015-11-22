@@ -133,7 +133,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //System.out.println(userLista.get(0).get("latitud"));
         //System.out.println(userLista.size());
 
-
+        LatLng posReu = new LatLng(-12.02478756, -77.05208659);
+        map.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_grupo_16))
+                        .position(posReu)
+                        .title("Evento 1")
+                        .snippet("31 de octubre")
+        );
         //Busca mi posición
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
