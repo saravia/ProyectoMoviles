@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     Integer ID;
     //
     //
-    private void cargaUsuario(String name) {
+    private void cargaUsuario() {
         class cargaUsuario extends AsyncTask<String, String, String> {
             @Override
             protected void onPreExecute() {
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         cargaUsuario sendPostReqAsyncTask = new cargaUsuario();
-        sendPostReqAsyncTask.execute(name);
+        sendPostReqAsyncTask.execute();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         login = (Button)findViewById(R.id.btnLogin);
         registrar=(Button)findViewById(R.id.btnRegister);
         userLista = new ArrayList<HashMap<String, String>>();
+        cargaUsuario();
 
         // Hace Login
         login.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 String usuario = username.getText().toString();
                 String passw = pass.getText().toString();
                 // Verifica el usuario y su password
-                cargaUsuario(usuario);
                 //new cargaUsuario().execute();
                 try{
                     if (checklogindata(usuario, passw)==true) {

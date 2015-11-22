@@ -74,12 +74,12 @@ public class JSONParser {
             is.close();
             json = sb.toString();
         } catch (Exception e) {
-            Log.e("Buffer Error", "Error convert resultado" + e.toString());
+            Log.e("Buffer Error", "Error convert resultado " + e.toString());
         }
         try {
             jObj = new JSONObject(json);
         } catch (JSONException e) {
-            Log.e("JSON Parser","Error parsing data" + e.toString());
+            Log.e("JSON Parser","Error parsing data " + e.toString());
         }
         return jObj;
     }
