@@ -13,8 +13,10 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/crear"
-            android:id="@+id/btnIrCrearEvent" />
+
+            android:id="@+id/btnIrCrearEvent"
+            android:text="Crear Evento"
+            android:textSize="@android:dimen/app_icon_size" />
     </LinearLayout>
 
     <EditText

@@ -35,7 +35,7 @@ public class MenuLocalizacion extends TabActivity {
         Intent intentWindows = new Intent().setClass(this, Chat.class);
         TabHost.TabSpec tabSpecWindows = tabHost
                 .newTabSpec("Chat")
-                .setIndicator("", ressources.getDrawable(R.drawable.chat))
+                .setIndicator("", ressources.getDrawable(R.drawable.info))
                 .setContent(intentWindows);
         // colocamos Tabs
         tabHost.addTab(tabSpecAndroid);
